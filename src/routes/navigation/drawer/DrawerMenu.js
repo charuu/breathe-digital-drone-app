@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, SafeAreaView, Text } from 'react-native'
+import {TouchableOpacity,TouchableHighlight, View, SafeAreaView, Text } from 'react-native'
 import { DrawerActions } from 'react-navigation-drawer'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
@@ -21,7 +21,17 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+container: {
+      padding: 10,
+      marginTop: 3,
+      backgroundColor: '#d9f9b1',
+      alignItems: 'center',
+   },
+   text: {
+      color: '#4f603c'
+   }
 }
+
 
 const DrawerMenu = ({ navigation }) => (
   <SafeAreaView style={styles.root}>
@@ -36,9 +46,23 @@ const DrawerMenu = ({ navigation }) => (
         }}
       />
     </View>
-    <View style={styles.main}>
-      <Text>Drawer Menu</Text>
-    </View>
+ <TouchableOpacity
+                     key = {'home'}
+                     style = {styles.container}
+                     onPress = {() => navigation.navigate('Home')}>
+                     <Text style = {styles.text}>
+                        <Text>Home</Text>
+                     </Text>
+                  </TouchableOpacity>
+<TouchableOpacity
+                     key = {'profile'}
+                     style = {styles.container}
+                     onPress = {() => navigation.navigate('Profile')}>
+                     <Text style = {styles.text}>
+                        <Text>Profile</Text>
+                     </Text>
+                  </TouchableOpacity>
+  
   </SafeAreaView>
 )
 

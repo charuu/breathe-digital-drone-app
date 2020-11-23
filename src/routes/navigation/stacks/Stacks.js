@@ -1,11 +1,13 @@
 import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
 import { colors } from 'theme'
-import Home from 'scenes/home'
-import Profile from 'scenes/profile'
-import Details from 'scenes/details'
+import LoginScreen from '../../../scenes/home/LoginScreen'
+import HomeScreen from '../../../scenes/home/HomeScreen'
+import Profile from 'scenes/profile/Profile'
+import Details from 'scenes/details/Details'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
+import HeaderRight from './HeaderRight'
 
 const navigationProps = {
   headerTintColor: 'white',
@@ -14,11 +16,22 @@ const navigationProps = {
 }
 
 export const HomeNavigator = createStackNavigator({
+	Login: {
+    screen: LoginScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Login',
+      headerRight: <HeaderRight navigation={navigation} />,
+      headerLeft: <HeaderLeft navigation={navigation} />,
+      headerTitle: <HeaderTitle />,
+      ...navigationProps,
+    }),
+  },
   Home: {
-    screen: Home,
+    screen: HomeScreen,
     navigationOptions: ({ navigation }) => ({
       title: 'Home',
       headerLeft: <HeaderLeft navigation={navigation} />,
+      headerRight: <HeaderRight navigation={navigation} />,
       headerTitle: <HeaderTitle />,
       ...navigationProps,
     }),
